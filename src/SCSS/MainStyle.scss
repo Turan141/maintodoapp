@@ -66,13 +66,18 @@
 }
 .LogoSvgImg{
   display: flex;
-
   justify-content: center;
+
+  img{
+    margin-top: 50px;
+    max-width: 9rem;
+    max-height: 9rem;
+  }
 }
 
 .MainPageAbout{
   display: flex;
-  width: 17rem;
+  width: 14rem;
   p{
     margin-top: 20px;
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as LogoSVG } from "../../pics/image2vector.svg";
+import LogoPng from "../../pics/list.png";
 
 const MainPage = () => {
   return (
@@ -9,7 +9,7 @@ const MainPage = () => {
       </div>
       <div className="LogoTextDiv">
         <div className="LogoSvgImg">
-          <LogoSVG />
+          <img src={LogoPng} alt="fireSpot" />
         </div>
         <div className="MainPageAbout">
           <p>

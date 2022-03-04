@@ -9,7 +9,6 @@ const ListPage = () => {
   useEffect(() => {
     (function toDoList() {
       getUserTodo().then((data) => {
-        console.log(data.data);
         setFetchedData(data.data);
         setLoading(false);
       });

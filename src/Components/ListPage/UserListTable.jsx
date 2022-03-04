@@ -2,12 +2,6 @@ import React, { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
 
 const TodoList = ({ currentPosts }) => {
-  function deleteRow(e) {
-    console.log(e);
-    let i;
-    // document.getElementById("myTable").deleteRow(i);
-  }
-
   return (
     <div className="mainTodoDiv">
       <div className="tableListText">
@@ -29,13 +23,22 @@ const TodoList = ({ currentPosts }) => {
                 <tr key={item.id}>
                   <td>{item.userId}</td>
                   <td>{item.title}</td>
-                  <td>{JSON.stringify(item.completed)}</td>
+                  <td
+                    onClick={(e) => {
+                      let status = e.target;
+                      status.innerHTML === "true"
+                        ? (status.innerHTML = "false")
+                        : (status.innerHTML = "true");
+                    }}
+                  >
+                    {JSON.stringify(item.completed)}
+                  </td>
                   <td>
                     <button
                       type="button"
                       onClick={(e) => {
-                        let i = e.target.parentNode.parentNode.rowIndex;
-                        return document.getElementById("myTable").deleteRow(i);
+                        let i = e.target.parentNode.parentNode;
+                        i.classList.add("hidden");
                       }}
                     >
                       X
@@ -61,14 +64,14 @@ const ToDoTable = ({ fetchedData }) => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <>
+    <div>
       <TodoList currentPosts={currentPosts} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={fetchedData.length}
         paginate={paginate}
       />
-    </>
+    </div>
   );
 };
 

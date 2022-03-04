@@ -140,6 +140,8 @@
     box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.2);
     background-color: #47423F;
     color:white;
+    transition: 0.5s ease;
+
   }
   button{
     background: none;
@@ -255,4 +257,10 @@
       color:red;
     }
   }
+}
+
+.hidden{
+  transition: 0.5s ease;
+  opacity: 0;
+  visibility: hidden;
 }

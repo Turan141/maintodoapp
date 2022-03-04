@@ -94,3 +94,60 @@
     gap: 10rem;
   }
 }
+.mainTodoDiv{
+  background-color: #c0ded9;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+  h1{
+
+  }
+  .tableListText{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 4rem;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .tableDiv{
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    font-family: sans-serif;
+  }
+}
+.todoTable{
+  border-radius: 10px;
+  padding: 10px;
+
+  table{
+
+  }
+  th{
+    border:3px solid #95A5A6;
+    background-color: #222;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 1.2rem;
+    color: #6BD0FF;
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.2);
+
+  }
+  td{
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.2);
+    background-color: #47423F;
+    color:white;
+  }
+  tr{
+  }
+  button{
+
+    td{
+
+    }
+  }
+}

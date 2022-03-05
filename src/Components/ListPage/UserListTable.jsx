@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
 
-const TodoList = ({ currentPosts, todos }) => {
+const TodoList = ({ currentPosts, todos, setShouldRender }) => {
+  const handleSubmit = () => {};
   return (
     <div className="mainTodoDiv">
       <div className="tableListText">
         <h1>ToDo List</h1>
+      </div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Insert ToDo task:
+            <input />
+          </label>
+          <input type="submit" value="Add ToDo" />
+        </form>
       </div>
       <div className="tableDiv">
         <table cellSpacing="30" className="todoTable" id="myTable">
@@ -49,7 +59,8 @@ const TodoList = ({ currentPosts, todos }) => {
                             );
                           }
                         }
-                        window.location.reload();
+                        // window.location.reload();
+                        setShouldRender(true);
                       }}
                     >
                       X
@@ -65,7 +76,7 @@ const TodoList = ({ currentPosts, todos }) => {
   );
 };
 
-const ToDoTable = ({ fetchedData, todos }) => {
+const ToDoTable = ({ fetchedData, todos, setShouldRender }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostPerPage] = useState(4);
 
@@ -76,7 +87,11 @@ const ToDoTable = ({ fetchedData, todos }) => {
 
   return (
     <div>
-      <TodoList currentPosts={currentPosts} todos={todos} />
+      <TodoList
+        currentPosts={currentPosts}
+        todos={todos}
+        setShouldRender={setShouldRender}
+      />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={fetchedData.length}

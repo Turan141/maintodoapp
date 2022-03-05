@@ -3,15 +3,22 @@ import getUserTodo from "../Service";
 import ToDoTable from "./UserListTable";
 
 const ListPage = () => {
-  const [isLoading, setLoading] = useState(true);
+  const [shouldRender, setShouldRender] = useState(true);
+  const [isLoading, setLoading] = useState(false);
   const [todos, setTodos] = useState(
     localStorage.getItem("todos")
       ? JSON.parse([localStorage.getItem("todos")])
       : []
   );
+  const json = JSON.parse(localStorage.getItem("todos"));
 
   useEffect(() => {
-    if (!localStorage.getItem("todos")) {
+    if (json) {
+      if (shouldRender) {
+        setTodos(json);
+        setShouldRender(false);
+      }
+    } else {
       const toDoList = () => {
         getUserTodo().then((data) => {
           setLoading(false);
@@ -20,13 +27,16 @@ const ListPage = () => {
         });
       };
       toDoList();
-    } else setLoading(false);
-  }, [todos]);
-
+    }
+  }, [json]);
   return (
     <>
       {!isLoading ? (
-        <ToDoTable fetchedData={todos} todos={todos} />
+        <ToDoTable
+          fetchedData={todos}
+          todos={todos}
+          setShouldRender={setShouldRender}
+        />
       ) : (
         <h1>Empty</h1>
       )}

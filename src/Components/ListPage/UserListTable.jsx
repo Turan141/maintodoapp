@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Pagination from "../Pagination/Pagination";
 
-const TodoList = ({ currentPosts }) => {
+const TodoList = ({ currentPosts, todos }) => {
   return (
     <div className="mainTodoDiv">
       <div className="tableListText">
@@ -21,7 +21,7 @@ const TodoList = ({ currentPosts }) => {
             {currentPosts.map((item) => {
               return (
                 <tr key={item.id}>
-                  <td>{item.userId}</td>
+                  <td>{item.id}</td>
                   <td>{item.title}</td>
                   <td
                     onClick={(e) => {
@@ -37,8 +37,19 @@ const TodoList = ({ currentPosts }) => {
                     <button
                       type="button"
                       onClick={(e) => {
-                        let i = e.target.parentNode.parentNode;
-                        i.classList.add("hidden");
+                        let targetId =
+                          e.target.parentNode.parentNode.childNodes[0]
+                            .innerHTML;
+                        for (let i = 0; i < todos.length; i++) {
+                          if (+todos[i].id === +targetId) {
+                            todos.splice(i, 1);
+                            localStorage.setItem(
+                              "todos",
+                              JSON.stringify(todos)
+                            );
+                          }
+                        }
+                        window.location.reload();
                       }}
                     >
                       X
@@ -54,7 +65,7 @@ const TodoList = ({ currentPosts }) => {
   );
 };
 
-const ToDoTable = ({ fetchedData }) => {
+const ToDoTable = ({ fetchedData, todos }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostPerPage] = useState(4);
 
@@ -65,7 +76,7 @@ const ToDoTable = ({ fetchedData }) => {
 
   return (
     <div>
-      <TodoList currentPosts={currentPosts} />
+      <TodoList currentPosts={currentPosts} todos={todos} />
       <Pagination
         postsPerPage={postsPerPage}
         totalPosts={fetchedData.length}

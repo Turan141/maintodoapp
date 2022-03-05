@@ -1,5 +1,4 @@
 import "./App.css";
-import { Navbar } from "./Components/Navbar";
 import React from "react";
 import ListPage from "./Components/ListPage/ListPage";
 import MainPage from "./Components/MainPage/MainPage";

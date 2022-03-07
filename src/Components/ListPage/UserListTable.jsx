@@ -1,18 +1,37 @@
-import React, { useState, useEffect } from "react";
-import Pagination from "../Pagination/Pagination";
+import React, { useState, useEffect, useRef } from 'react'
+import Pagination from '../Pagination/Pagination'
+
 
 const TodoList = ({ currentPosts, todos, setShouldRender }) => {
-  const handleSubmit = () => {};
+  const [ id, setId ] = useState(todos.length - 1)
+  const todoInputRef = useRef('')
+  useEffect(() => {
+    setId(todos.length - 1)
+  }, [])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    let formSubmit = {
+      userId: 999,
+      id: id,
+      title: todoInputRef.current.value,
+      completed: false,
+    }
+    todos.unshift(formSubmit)
+    localStorage.setItem('todos', JSON.stringify(todos))
+    setShouldRender(true)
+    setId((prevId) => prevId + 1)
+  }
   return (
     <div className="mainTodoDiv">
       <div className="tableListText">
         <h1>ToDo List</h1>
       </div>
-      <div>
+      <div className="formDiv">
         <form onSubmit={handleSubmit}>
           <label>
             Insert ToDo task:
-            <input />
+            <input ref={todoInputRef} />
           </label>
           <input type="submit" value="Add ToDo" />
         </form>
@@ -35,10 +54,18 @@ const TodoList = ({ currentPosts, todos, setShouldRender }) => {
                   <td>{item.title}</td>
                   <td
                     onClick={(e) => {
-                      let status = e.target;
-                      status.innerHTML === "true"
-                        ? (status.innerHTML = "false")
-                        : (status.innerHTML = "true");
+                      for (let i = 0; i < todos.length; i++) {
+                        if (
+                          +todos[i].id ===
+                          +e.target.parentNode.firstChild.innerHTML
+                        ) {
+                          todos[i].completed === true
+                            ? (todos[i].completed = false)
+                            : (todos[i].completed = true)
+                        }
+                        localStorage.setItem('todos', JSON.stringify(todos))
+                        setShouldRender(true)
+                      }
                     }}
                   >
                     {JSON.stringify(item.completed)}
@@ -48,42 +75,37 @@ const TodoList = ({ currentPosts, todos, setShouldRender }) => {
                       type="button"
                       onClick={(e) => {
                         let targetId =
-                          e.target.parentNode.parentNode.childNodes[0]
-                            .innerHTML;
+                          e.target.parentNode.parentNode.childNodes[0].innerHTML
                         for (let i = 0; i < todos.length; i++) {
                           if (+todos[i].id === +targetId) {
-                            todos.splice(i, 1);
-                            localStorage.setItem(
-                              "todos",
-                              JSON.stringify(todos)
-                            );
+                            todos.splice(i, 1)
+                            localStorage.setItem('todos', JSON.stringify(todos))
                           }
                         }
                         // window.location.reload();
-                        setShouldRender(true);
+                        setShouldRender(true)
                       }}
                     >
                       X
                     </button>
                   </td>
                 </tr>
-              );
+              )
             })}
           </tbody>
         </table>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const ToDoTable = ({ fetchedData, todos, setShouldRender }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostPerPage] = useState(4);
-
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexofFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = fetchedData.slice(indexofFirstPost, indexOfLastPost);
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const [ currentPage, setCurrentPage ] = useState(1)
+  const [ postsPerPage, setPostPerPage ] = useState(4)
+  const indexOfLastPost = currentPage * postsPerPage
+  const indexofFirstPost = indexOfLastPost - postsPerPage
+  const currentPosts = fetchedData.slice(indexofFirstPost, indexOfLastPost)
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   return (
     <div>
@@ -98,7 +120,7 @@ const ToDoTable = ({ fetchedData, todos, setShouldRender }) => {
         paginate={paginate}
       />
     </div>
-  );
-};
+  )
+}
 
-export default ToDoTable;
+export default ToDoTable

@@ -1,9 +1,9 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
-.NavbarDiv{
+.NavbarDiv {
   display: flex;
   justify-content: flex-end;
   background-color: #222;
@@ -12,7 +12,7 @@
   align-items: center;
   position: relative;
 }
-.NavLink{
+.NavLink {
   height: 2.5rem;
   padding-top: 7px;
   width: 5.4rem;
@@ -26,10 +26,9 @@
   border: 1px solid #3e4444;
   border-radius: 15px;
   background-color: teal;
-
 }
 
-#Header_logo{
+#Header_logo {
   color: teal;
   display: flex;
   position: absolute;
@@ -37,124 +36,205 @@
   font-size: 0.8rem;
 }
 
-.MainPageDiv{
+.MainPageDiv {
   display: flex;
   max-width: 100%;
   position: relative;
-  min-height:32rem;
+  min-height: 32rem;
   background-color: #c0ded9;
   flex-direction: column;
 }
 
-
-
-#svg{
+#svg {
   display: flex;
   justify-content: center;
   width: 13rem;
   height: 13rem;
   margin-top: 2rem;
 }
-.MainPageHeader{
+.MainPageHeader {
   display: flex;
   justify-content: center;
-  background-color:#3e4444;
-  h1{
+  background-color: #3e4444;
+  h1 {
     font-size: 2rem;
     color: #03aaaa;
   }
 }
-.LogoSvgImg{
+.LogoSvgImg {
   display: flex;
   justify-content: center;
 
-  img{
+  img {
     margin-top: 50px;
     max-width: 9rem;
     max-height: 9rem;
   }
 }
 
-.MainPageAbout{
+.MainPageAbout {
   display: flex;
   width: 14rem;
-  p{
+  p {
     margin-top: 20px;
   }
 }
-.LogoTextDiv{
+.LogoTextDiv {
   display: flex;
   justify-content: center;
   width: 100%;
   margin-top: 3rem;
 }
 
-@media only screen and (min-width: 720px) and (max-width: 1600px){
+@media only screen and (min-width: 720px) and (max-width: 1600px) {
   .LogoTextDiv {
     gap: 10rem;
   }
+  .tableDiv {
+    width: 400px;
+  }
 }
-.mainTodoDiv{
+
+@media only screen and (min-width: 300px) and (max-width: 650px) {
+  .NavbarDiv {
+    width: 90%;
+  }
+  .mainTodoDiv {
+    width: 100%;
+    height: 100%;
+  }
+  .tableListText {
+    h1 {
+      font-size: 30px;
+    }
+  }
+  .LogoTextDiv {
+    gap: 10rem;
+  }
+  .formDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    form {
+      width: 100%;
+      label{
+        input{
+          width:300px;
+        }
+   
+      }
+      input{
+        width:auto;
+        height:30px;
+        margin-top: 10px;
+      }
+    }
+  }
+  .tableDiv {
+    width: 375px;
+    .todoTable {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 375px;
+      padding: 0;
+      margin: 0;
+    }
+    thead {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 375px;
+      tr {
+        display: flex;
+        justify-content: center;
+        width: 375px;
+        th{
+          margin: 2px;
+          margin-top: 30px;
+        }
+      }
+    }
+    tbody{
+      width: 375px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      tr{
+        overflow-y: hidden;
+        width: 375px;
+        td{
+          height:20px;
+          padding: 0;
+          margin: 0;
+          overflow-y:hidden;
+          line-height: 20px;
+          font-size: 1rem;
+          width:100px;
+        }
+      }
+    }
+  }
+}
+
+// -*-*-*-*-
+.mainTodoDiv {
   background-color: #c0ded9;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
-  h1{
-
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  h1 {
   }
-  .tableListText{
+  .tableListText {
     display: flex;
     justify-content: center;
     width: 100%;
     height: 4rem;
     font-size: 1.8rem;
   }
-  .tableDiv{
+  .tableDiv {
     text-align: center;
     font-size: 1.1rem;
     line-height: 2rem;
     font-family: sans-serif;
   }
 }
-.todoTable{
+.todoTable {
   border-radius: 10px;
   padding: 10px;
 
-  table{
-
+  table {
   }
-  th{
-    border:3px solid #95A5A6;
+  th {
+    border: 3px solid #95a5a6;
     background-color: #222;
     border-radius: 15px;
     padding: 10px;
     font-size: 1.2rem;
-    color: #6BD0FF;
-    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.2);
-
+    color: #6bd0ff;
+    box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
   }
-  td{
+  td {
     padding: 5px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.2);
-    background-color: #47423F;
-    color:white;
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.2);
+    background-color: #47423f;
+    color: white;
     transition: 0.5s ease;
-
   }
-  button{
+  button {
     background: none;
-    border:none;
+    border: none;
     width: 25px;
     font-size: 1rem;
-    color:red;
-    &:hover{
+    color: red;
+    &:hover {
       cursor: pointer;
       color: blue;
     }
   }
-
 }
 
 .pagination-container {
@@ -227,57 +307,57 @@
   }
 }
 
-.paginateNumbers{
+.paginateNumbers {
   display: flex;
   justify-content: center;
-  flex-direction:row;
+  flex-direction: row;
   background-color: #222;
-  overflow-y:scroll;
-  nav{
+  overflow-y: scroll;
+  nav {
     display: flex;
     justify-content: center;
   }
-  ul{
+  ul {
     display: flex;
     justify-content: center;
     list-style: none;
   }
-  a{
+  a {
     display: flex;
     justify-content: center;
-    margin:2px;
-    color: #95A5A6;
+    margin: 2px;
+    color: #95a5a6;
     ma-width: 100%;
-    &:active{
-      color:red;
+    &:active {
+      color: red;
     }
-    &:target{
-      color:red;
+    &:target {
+      color: red;
     }
-    &:focus{
-      color:red;
+    &:focus {
+      color: red;
     }
   }
 }
 
-.hidden{
+.hidden {
   transition: 0.5s ease;
   opacity: 0;
   visibility: hidden;
 }
 
-.formDiv{
-display: flex;
-justify-content: center;
-margin-top: 25px;
-width:100%;
-  label{
+.formDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  width: 100%;
+  label {
     font-size: 1.5rem;
     margin: 0 10px 0 10px;
   }
-  input{
+  input {
     border: none;
-    padding:7px;
+    padding: 7px;
     margin-left: 15px;
     width: 15rem;
     border-radius: 10px;

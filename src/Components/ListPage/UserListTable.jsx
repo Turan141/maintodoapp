@@ -21,6 +21,7 @@ const TodoList = ({ currentPosts, todos, setShouldRender }) => {
     localStorage.setItem('todos', JSON.stringify(todos))
     setShouldRender(true)
     setId((prevId) => prevId + 1)
+    todoInputRef.current.value = ''
   }
   return (
     <div className="mainTodoDiv">

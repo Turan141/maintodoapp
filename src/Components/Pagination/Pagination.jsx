@@ -1,11 +1,12 @@
-import React from "react";
-import "../../SCSS/MainStyle.scss";
+import React from 'react'
+import '../../SCSS/MainStyle.scss'
+
 
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
-  const pageNumbers = [];
+  const pageNumbers = []
 
   for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
-    pageNumbers.push(i);
+    pageNumbers.push(i)
   }
   return (
     <div className="paginateNumbers">
@@ -15,8 +16,8 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
             <li key={number}>
               <a
                 onClick={function changeList(e) {
-                  e.preventDefault();
-                  paginate(number);
+                  e.preventDefault()
+                  paginate(number)
                 }}
                 href="!#"
               >
@@ -27,7 +28,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
         </ul>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default Pagination;
+export default Pagination

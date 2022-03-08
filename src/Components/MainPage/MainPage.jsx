@@ -1,5 +1,6 @@
-import React from "react";
-import LogoPng from "../../pics/list.png";
+import React from 'react'
+import LogoPng from '../../pics/list.png'
+
 
 const MainPage = () => {
   return (
@@ -23,7 +24,7 @@ const MainPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default MainPage;
+export default MainPage

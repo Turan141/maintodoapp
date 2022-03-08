@@ -1,9 +1,10 @@
-import "./App.css";
-import React from "react";
-import ListPage from "./Components/ListPage/ListPage";
-import MainPage from "./Components/MainPage/MainPage";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import "./SCSS/MainStyle.scss";
+import './App.css'
+import React from 'react'
+import ListPage from './Components/ListPage/ListPage'
+import MainPage from './Components/MainPage/MainPage'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import './SCSS/MainStyle.scss'
+
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <Route path="/listpage" element={<ListPage />} />
       </Routes>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
